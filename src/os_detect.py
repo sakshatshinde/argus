@@ -8,9 +8,7 @@ class operating_system:
         import distro
 
         os = distro.linux_distribution()
-        self.name = os[0]
-        self.version = os[1]
-        self.release = os [2]
+        self.name, self.version, self.release = os 
 
     def __repr__(self):
         return repr(
