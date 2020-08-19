@@ -12,10 +12,10 @@ class operating_system:
         os_identifiers = distro.linux_distribution()
         self.name, self.version, self.release = os_identifiers
 
-        # Checking the program perms. SEEMS TO BE BROKEN ON MY END
+        # Checking the program perms. 
         def _perm_check():
             os_uid = os.getuid()
-            if os_uid == 0 or os_uid == None:
+            if os_uid != 0 or os_uid == None:
                 raise NameError('Please run this with root user permisions')
                     
             else:
