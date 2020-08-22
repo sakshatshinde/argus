@@ -117,7 +117,7 @@ if ! echo 1 > function_profile_enabled; then
 fi
 
 (( opt_timestamp )) && printf "%-8s " TIME
-printf "%8s %8s %8s %8s %12s %10s" HITS MISSES DIRTIES RATIO "BUFFERS_MB" "CACHE_MB"
+# printf "%8s %8s %8s %8s %12s %10s" HITS MISSES DIRTIES RATIO "BUFFERS_MB" "CACHE_MB"
 (( opt_debug )) && printf "  DEBUG"
 echo
 
@@ -149,7 +149,7 @@ while (( !quit && (!opt_duration || secs < duration) )); do
 			misses = 0
 		hits = total - misses
 		ratio = 100 * hits / total
-		printf "%8d %8d %8d %7.1f%% %12.0f %10.0f", hits, misses, mbd,
+		printf "hits:%8d, misses:%8d, mbd:%8d, ratio:%7.1f%%, buffers_mb:%12.0f, cached_mb:%10.0f", hits, misses, mbd,
 		    ratio, buffers_mb, cached_mb
 		if (debug)
 			printf "  (%d %d %d %d)", mpa, mbd, apcl, apd
