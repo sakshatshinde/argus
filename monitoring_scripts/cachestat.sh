@@ -149,7 +149,7 @@ while (( !quit && (!opt_duration || secs < duration) )); do
 			misses = 0
 		hits = total - misses
 		ratio = 100 * hits / total
-		printf "hits:%8d, misses:%8d, mbd:%8d, ratio:%7.1f%%, buffers_mb:%12.0f, cached_mb:%10.0f", hits, misses, mbd,
+		printf "hits:%8d, misses:%8d, mbd:%8d, ratio:%7.0f%%, buffers_mb:%12.0f, cached_mb:%10.0f", hits, misses, mbd,
 		    ratio, buffers_mb, cached_mb
 		if (debug)
 			printf "  (%d %d %d %d)", mpa, mbd, apcl, apd
