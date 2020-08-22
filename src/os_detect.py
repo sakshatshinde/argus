@@ -13,15 +13,14 @@ class operating_system:
         self.name, self.version, self.release = os_identifiers
 
         # Checking the program perms. 
-        def _perm_check():
+        def perm_check():
             os_uid = os.getuid()
             if os_uid != 0 or os_uid == None:
                 raise NameError('Please run this with root user permisions')
-                    
             else:
                 print('Running with root user perms, as expected ...')
         
-        _perm_check()
+        perm_check()
         # print(os)
 
     def __repr__(self):
