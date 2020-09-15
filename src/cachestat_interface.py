@@ -5,6 +5,7 @@ class cachestat:
     # class is actually used to generate an object
     import subprocess
     import re
+    from datetime import datetime
 
     # Setting up cache
     from pymemcache.client.base import Client
@@ -46,8 +47,15 @@ class cachestat:
         
         # Mapping incoming data to their identifiers
         if ingest_data is not None: 
-            input_data = dict(zip(self.default_struct, ingest_data))
-            self.argus_client.set_many(input_data)
+
+            # Use date - time (seconds) as key 
+            key_datetime = str(self.datetime.now()).replace(" ", "_")
+
+            # Convert dict -> str to store in memcached
+            input_data = str(dict(zip(self.default_struct, ingest_data)))
+            
+            # print(key_datetime, input_data)
+            self.argus_client.set(key_datetime, input_data)
         
     # Retrieves data from memcached running instance    
     def retrive_data_cache(self, key: str):
