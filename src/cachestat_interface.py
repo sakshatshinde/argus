@@ -8,11 +8,6 @@ class cachestat:
     import importlib
     import local_cache as lc
     
-    # from datetime import datetime
-
-    # Setting up cache
-    # from pymemcache.client.base import Client
-    # argus_client = Client(('localhost', 11211))
 
     # Default time interval is set to 5
     cmd = ['../monitoring_scripts/cachestat.sh', '5']
@@ -44,25 +39,7 @@ class cachestat:
             if result: return result
         else:
             pass
-
-    # def __inject_data_cache(self, ingest_data):
-    #     # self.argus_client.set_many()
         
-    #     # Mapping incoming data to their identifiers
-    #     if ingest_data is not None: 
-
-    #         # Use date - time (seconds) as key 
-    #         key_datetime = str(self.datetime.now()).replace(" ", "_")
-
-    #         # Convert dict -> str to store in memcached
-    #         input_data = str(dict(zip(self.default_struct, ingest_data)))
-            
-    #         # print(key_datetime, input_data)
-    #         self.argus_client.set(key_datetime, input_data)
-        
-    # Retrieves data from memcached running instance    
-    # def retrive_data_cache(self, key: str):
-    #     print(self.argus_client.get(key))
 
     # Capturing cachestat input upto a certain line count then killing the process
     def acquire_cachestat_data(self, count = 0, count_upto = 4):
@@ -72,8 +49,8 @@ class cachestat:
             input_string = str(line)
             result = self.__regex_check(input_string)
             # print('This is result',result)
+            
             # Injecting data into the cache
-            # self.__inject_data_cache(result)
             self.lc.inject_data_cache(result, self.default_struct)
 
             # Limiting the amount of time the metrics are captured
@@ -82,9 +59,10 @@ class cachestat:
                 cachestat_process.kill() 
                 break
         
-# Memcached is overwriting old data cause of the same keys
+
 cs = cachestat()
 cs.acquire_cachestat_data()
+
+# EXAMPLE
 # cs.lc.retrive_data_cache('2020-09-15_11:25:15.398171')
-# cs.retrive_data_cache('buffers_mb')
 # (hits:).+(\d+), +([a-z]+): +(\d+), +([a-z]+): +((\d)+\.(\d)%), +[a-z]+_[a-z]+:.+\d
