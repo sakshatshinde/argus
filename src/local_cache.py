@@ -1,6 +1,3 @@
-
-
-
 from datetime import datetime
 from pymemcache.client.base import Client
 
@@ -18,6 +15,7 @@ def inject_data_cache(ingest_data, default_struct):
             # Use date - time (seconds) as key 
             key_datetime = str(datetime.now()).replace(" ", "_")
             print(key_datetime)
+        
             # Convert dict -> str to store in memcached
             input_data = str(dict(zip(default_struct, ingest_data)))
             
