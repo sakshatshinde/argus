@@ -6,19 +6,33 @@ argus_client = Client(('localhost', 11211))
 
 # DEFINE A DEFAULT STRUCT FOR EACH TOOL BEFORE USING THIS !!!!!!!!!
 
-def inject_data_cache(ingest_data, default_struct):
+def inject_data_cache(ingest_data, default_struct, TOOL):
         # self.argus_client.set_many()
+        
         
         # Mapping incoming data to their identifiers
         if ingest_data is not None: 
 
             # Use date - time (seconds) as key 
             key_datetime = str(datetime.now()).replace(" ", "_")
-            print(key_datetime)
+            # print(key_datetime)
         
-            # Convert dict -> str to store in memcached
-            input_data = str(dict(zip(default_struct, ingest_data)))
-            
+            if TOOL == 'CACHESTAT':
+                # Convert dict -> str to store in memcached
+                input_data = str(dict(zip(default_struct, ingest_data)))
+
+            if TOOL == 'IO_LATENCY':
+                ms_range = list(ingest_data.keys())
+                IO = list(ingest_data.values())
+                IO = sum(IO, [])
+                # print('Ms', ms_range)
+                # print('IO', IO)
+
+                input_data = 'ms_range' + str(ms_range) + 'IO' + str(IO)
+                # print(input_data)
+
+            print('This will be injected:', input_data)
+
             # print(key_datetime, input_data)
             argus_client.set(key_datetime, input_data)
 
