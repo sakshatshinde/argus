@@ -48,10 +48,11 @@ class cachestat:
 
             input_string = str(line)
             result = self.__regex_check(input_string)
-            # print('This is result',result)
+            print('This is result',result)
             
             # Injecting data into the cache
-            self.lc.inject_data_cache(result, self.default_struct)
+            self.lc.inject_data_cache(result, self.default_struct, 'CACHESTAT')
+            # print(result)
 
             # Limiting the amount of time the metrics are captured
             count = count + 1
