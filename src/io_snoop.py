@@ -11,15 +11,16 @@ class iosnoop:
     # from datetime import datetime
 
     # Setting up cache
-    # from pymemcache.client.base import Client
-    # argus_client = Client(('localhost', 11211))
+    from pymemcache.client.base import Client
+    argus_client = Client(('localhost', 11211))
 
     # Default time interval is set to 5
-    cmd = ['./iosnoop.sh', '5']
+    cmd = ['../monitoring_scripts/iosnoop.sh', '5']
 
     # Default output structure (keys for memchaced) - Used later to map o/p values to their keys
     default_struct = ['COMM', 'PID','TYPE','DEV','BLOCK','BYTES','LATms']
 
+    subprocess.call(['rm', '/var/tmp/.ftrace-lock'])
     def __run_iosnoop(self, command):
         global iosnoop_process 
         
@@ -60,8 +61,8 @@ class iosnoop:
             result = self.__regex_check(input_string)
             print('This is result',result)
             # Injecting data into the cache
-            # self.__inject_data_cache(result)
-            #self.lc.inject_data_cache(result, self.default_struct)
+            # self.inject_data_cache(result)
+            self.lc.inject_data_cache(result, self.default_struct, 'IO_SNOOP')
 
             # Limiting the amount of time the metrics are captured
             count = count + 1
