@@ -18,7 +18,10 @@ def inject_data_cache(ingest_data, default_struct, TOOL):
         if ingest_data is not None: 
 
             # Use date - time (seconds) as key 
-            key_datetime = str(datetime.now()).replace(" ", "_")
+            # memcached doesn't like empty spaces
+            # firebase doesn't like '.' so replacing both values by '_' and 'dot'
+            
+            key_datetime = str(datetime.now()).replace(" ", "_").replace('.','dot')
             # print(key_datetime)
         
             if TOOL == 'CACHESTAT':
@@ -44,7 +47,7 @@ def inject_data_cache(ingest_data, default_struct, TOOL):
 
                 # remote database ingest
                 db_ingest_data = {
-                        str(key_datetime): str(input_data)
+                        key_datetime: str(input_data)
                     }
                     
                 print(db_ingest_data)    
