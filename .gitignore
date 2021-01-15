@@ -146,6 +146,7 @@ dmypy.json
 !.vscode/extensions.json
 *.code-workspace
 
+get-pip.py
 ### VisualStudioCode Patch ###
 # Ignore all local history of files
 .history
