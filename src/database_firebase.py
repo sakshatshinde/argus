@@ -1,4 +1,6 @@
 
+# An example file to show how the firebase connectivity is achieved
+
 # from firebase import firebase  
 # import local_cache as lc 
 
