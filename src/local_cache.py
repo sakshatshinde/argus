@@ -1,6 +1,10 @@
 from datetime import datetime
 from pymemcache.client.base import Client
 
+# Setting up remote database
+from firebase import firebase 
+fb = firebase.FirebaseApplication('https://cdac-argus-default-rtdb.firebaseio.com/', None)
+
 argus_client = Client(('localhost', 11211))
 
 
@@ -35,7 +39,16 @@ def inject_data_cache(ingest_data, default_struct, TOOL):
 
             # print(key_datetime, input_data)
             if input_data != 'ms_range[]IO[]':
+                # local cache ingest
                 argus_client.set(key_datetime, input_data)
+
+                # remote database ingest
+                db_ingest_data = {
+                        str(key_datetime): str(input_data)
+                    }
+                    
+                print(db_ingest_data)    
+                database_ingest = fb.post('cdac-argus-default-rtdb/metrics', db_ingest_data)
 
 # Retrieves data from memcached running instance    
 def retrive_data_cache(key: str):
@@ -49,3 +62,6 @@ def flush_entire_cache():
 # KEY = DATE_TIME
 retrive_data_cache('2021-01-14_18:43:10.533409')
 # flush_entire_cache()
+
+# result = fb.post('cdac-argus-default-rtdb/metrics', data)  
+# print(result)  

@@ -6,6 +6,10 @@ class iolatency:
     import re
     import importlib
     import local_cache as lc
+    # from firebase import firebase 
+
+    # Database connection
+    # fb = firebase.FirebaseApplication('https://cdac-argus-default-rtdb.firebaseio.com/', None)  
 
     # Default time interval is set to 5
     cmd = ['../monitoring_scripts/iolatency.sh', '5']
@@ -78,7 +82,7 @@ class iolatency:
             
         
 
-        print(final_result)
+        print('This is final result', final_result)
 
         # Injecting data into the cache
         self.lc.inject_data_cache(final_result, self.default_struct, 'IO_LATENCY')
