@@ -1,6 +1,11 @@
 from firebase import firebase  
 import pprint
 
+#---------------READ THIS-----------------------------------
+# There is a mistake in this code, the tools are misllabled
+# cachestat_data_ms = [] AND cachestat_data_IO = [] is actually from IO_LATENCY TOOL
+# io_latency_data = [] is actually from CACHESTAT tool
+#-----------------------------------------------------------
 
 # setting up prettyPrint: because the o/p is messy
 pp = pprint.PrettyPrinter(indent=4)
@@ -43,20 +48,19 @@ for val in result.values():
 
 
 print("-------------------------------------------------")
-print("Cachestat MS RANGE DATA")
+print("IO_LATENCY MS_RANGE DATA")
 print("-------------------------------------------------")
 pp.pprint( cachestat_data_ms)
 
 print("-------------------------------------------------")
-print("Cachestat IO DATA")
+print("IO_LATENCY IO DATA")
 print("-------------------------------------------------")
 pp.pprint(cachestat_data_IO)
 
 print("-------------------------------------------------")
-print("IO_LATENCY IO DATA")
+print("CACHESTAT DATA")
 print("-------------------------------------------------")
 pp.pprint(io_latency_data)
-
 
 # JSON STRUCTURE - DATABASE OUTLINE -> FOR BETTER UNDERSTANDING ON HOW THIS CODE WORKS
 
