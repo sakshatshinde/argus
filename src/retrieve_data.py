@@ -35,7 +35,7 @@ for val in result.values():
         cachestat_data_IO.append(eval(IO_metrics))
 
     elif (metrics[0].startswith("{")):
-        
+
         # storing cleaned and sorted data
         io_latency_data_cleaned = eval(metrics[0])
         io_latency_data.append(io_latency_data_cleaned)
@@ -57,7 +57,33 @@ print("IO_LATENCY IO DATA")
 print("-------------------------------------------------")
 pp.pprint(io_latency_data)
 
-# pp.pprint(result)
-# metric_data = result.values()
-# pp.pprint(metric_data)
-# print(type(result.values()))
+
+# JSON STRUCTURE - DATABASE OUTLINE -> FOR BETTER UNDERSTANDING ON HOW THIS CODE WORKS
+
+# {
+#   "cdac-argus-default-rtdb" : {
+#     "metrics" : {
+#       "-MR3hEfRZF92DgLdvndf" : {
+#         "2021-01-15_11:52:11dot701928" : "ms_range[('0', '1')]IO['16']"
+#       },
+#       "-MR3hjzQ_Ir5-c9Rd60_" : {
+#         "2021-01-15_11:54:19dot081534" : "ms_range[('0', '1'), ('1', '2')]IO['19', '8']"
+#       },
+#       "-MR3hqGyZ6cJbLJA1kke" : {
+#         "2021-01-15_11:54:44dot772003" : "ms_range[('0', '1')]IO['4']"
+#       },
+#       "-MR3hupcL_2tSM2IIOLm" : {
+#         "2021-01-15_11:55:03dot501919" : "ms_range[('0', '1'), ('1', '2'), ('2', '4'), ('4', '8'), ('8', '16'), ('16', '32')]IO['3', '0', '0', '0', '0', '1']"
+#       },
+#       "-MR3jDs2R6T7Y6LYYki4" : {
+#         "2021-01-15_12:00:52dot594892" : "{'hits': '21502', 'misses': '0', 'mbd': '27', 'ratio': '100', 'buffers_mb': '82', 'cached_mb': '1347'}"
+#       },
+#       "-MR3jF3j2dM_JwcNIlQx" : {
+#         "2021-01-15_12:00:57dot625313" : "{'hits': '26084', 'misses': '0', 'mbd': '36', 'ratio': '100', 'buffers_mb': '82', 'cached_mb': '1344'}"
+#       },
+#       "-MR3jGI5BS6GQe0AYjAy" : {
+#         "2021-01-15_12:01:02dot644831" : "{'hits': '18797', 'misses': '0', 'mbd': '12', 'ratio': '100', 'buffers_mb': '82', 'cached_mb': '1341'}"
+#       }
+#     }
+#   }
+# }
