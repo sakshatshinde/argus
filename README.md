@@ -8,7 +8,12 @@ A storage monitoring tool for CDAC's High Perfomance Computing systems
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues) [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ea81086bdefa4876a38f68fe3a2942bb)](https://app.codacy.com/manual/sakshatshinde/argus?utm_source=github.com&utm_medium=referral&utm_content=sakshatshinde/argus&utm_campaign=Badge_Grade_Settings)
 
+- ## Grafana Dashboard
 ![Image](grafana_argus_cdac.png)
+
+- ## Metrics Collector
 ![Image](metrics_collector.png)
+
+- ## Firebase
 ![Image](remote_db_cdac_argus.png)
 
