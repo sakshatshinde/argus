@@ -6,3 +6,4 @@ A storage monitoring tool for CDAC's High Perfomance Computing systems
 
 ![Image](metrics_collector.png)
 ![Image](remote_db_cdac_argus.png)
+![Image](grafana_argus_cdac.png)
