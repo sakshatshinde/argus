@@ -23,7 +23,8 @@ A storage monitoring tool for CDAC's High Perfomance Computing systems
   - Install memcached:`sudo apt install memcached libmemcached-tools` (for debian)
   -  [Grafana](https://grafana.com/docs/grafana/latest/installation/)
   -  [MySQL](https://dev.mysql.com/downloads/installer/)
-
+  - Setup a database in [Firebase](https://firebase.google.com/)
+  
 ### Usage
 
 Start memcached service
@@ -68,3 +69,11 @@ Start the grafana service
 $ sudo python cachestat.py
 $ sudo python retrieve_data.py
 ```
+
+#### About the firebase instance
+
+> Make sure to make all the necessary changes in the code and use your own firebase db
+
+> An example firebase url: https://cdac-argus-default-rtdb.firebaseio.com/
+
+
