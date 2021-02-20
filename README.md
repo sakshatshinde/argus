@@ -1,5 +1,5 @@
 # argus
-A storage monitoring tool for CDAC's High Perfomance Computing systems
+A storage monitoring tool for CDAC's High Performance Computing systems
 
 [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
 ![forthebadge made-with-python](https://forthebadge.com/images/badges/powered-by-black-magic.svg)
